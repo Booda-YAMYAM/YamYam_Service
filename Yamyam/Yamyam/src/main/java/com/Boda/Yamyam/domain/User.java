@@ -18,6 +18,9 @@ public class User {
 
     private  String name;
 
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
+
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private List<Restaurant> restaurants = new ArrayList<>();
