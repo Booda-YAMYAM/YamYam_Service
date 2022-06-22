@@ -25,8 +25,6 @@ public class Restaurant {
 
     private Double Y_coordinate;
 
-
-
     private  String address;
 
     private Long heart;
