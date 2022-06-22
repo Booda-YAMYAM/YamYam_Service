@@ -18,7 +18,9 @@ public class RestaurantRepository {
     public void save(Restaurant restaurant){em.persist(restaurant);}
 
     public List<Restaurant> findAllRestaurant() {
+        System.out.println(em.createQuery("select r from Restaurant r", Restaurant.class));
         return em.createQuery("select r from Restaurant r", Restaurant.class)
                 .getResultList();
+
     }
 }

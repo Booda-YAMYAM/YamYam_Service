@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter@Setter
@@ -15,13 +17,15 @@ public class Menu {
     private Long menuId;
 
     private String menuName;
-    private int price;
 
+    private Long price;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
-
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "menuId")
+//    private List<MenuImage> menuImages = new ArrayList<>();
 }
-
-
 
 
