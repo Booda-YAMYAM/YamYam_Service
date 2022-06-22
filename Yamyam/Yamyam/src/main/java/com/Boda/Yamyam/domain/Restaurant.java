@@ -13,31 +13,26 @@ import java.util.List;
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "restaurant_id")
     private Long restaurantId;
 
     private String restaurantName;
 
-    private  String restaurantNumber;
+    private String restaurantNumber;
 
     private Double X_coordinate;
 
     private Double Y_coordinate;
 
-    private  String address;
+    private String address;
 
     private Long heart;
 
-    private  String category;
+    private String category;
 
-
-    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "menu_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     private List<Menu> menus = new ArrayList<>();
-
-
-
 
 }
 

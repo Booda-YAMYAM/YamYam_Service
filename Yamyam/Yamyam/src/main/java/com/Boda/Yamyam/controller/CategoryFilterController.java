@@ -2,6 +2,7 @@ package com.Boda.Yamyam.controller;
 
 import com.Boda.Yamyam.domain.Menu;
 import com.Boda.Yamyam.domain.Restaurant;
+import com.Boda.Yamyam.dto.RestaurantDto;
 import com.Boda.Yamyam.repository.MenuRepository;
 import com.Boda.Yamyam.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,77 +33,124 @@ public class CategoryFilterController {
     private final MenuRepository menuRepository;
     List<Menu> menulist = new ArrayList<>();
 
+
     @GetMapping("/restaurant")
-    public List<Restaurant> initialList() {
+    public List<RestaurantDto> initialList() {
 
 
-        for (int i = 0; i < 10; i++) {
+//        Restaurant restaurant = new Restaurant();
+//        Menu menu = new Menu();
+//
+//        menu.setPrice(10000L);
+//        menu.setMenuName("고기");
+//        menuRepository.save(menu);
+//        menulist.add(menu);
+//        menu.setRestaurant(restaurant);
+//        restaurant.getMenus().add(menu);
+//        restaurant.setMenus(menulist);
+//
+//        restaurant.setRestaurantName("이차돌");
+//        restaurant.setRestaurantNumber("010-xxxx-xxxx");
+//        restaurant.setAddress("판교역로 235");
+//        restaurant.setX_coordinate(getAddress(restaurant.getAddress()).getDouble("x"));
+//        restaurant.setY_coordinate(getAddress(restaurant.getAddress()).getDouble("y"));
+//
+//
+//        restaurant.setHeart((long) 22);
+//        restaurant.setCategory("korea");
+//        restaurantRepository.save(restaurant);
+//
+//
+//        Restaurant restaurant2 = new Restaurant();
+//        Menu menu2 = new Menu();
+//        menu2.setPrice(10000L);
+//        menu2.setMenuName("탕수육 ");
+//        menuRepository.save(menu2);
+//        menulist.add(menu2);
+//        menu2.setRestaurant(restaurant2);
+//        restaurant.getMenus().add(menu2);
+//        restaurant2.setMenus(menulist);
+//
+//
+//        restaurant2.setRestaurantName("홍콩반점");
+//        restaurant2.setRestaurantNumber("010-xxxx-xxxx");
+//        restaurant2.setAddress("경기도 성남시 분당구 대왕판교로385번길 28");
+//        restaurant2.setX_coordinate(getAddress(restaurant2.getAddress()).getDouble("x"));
+//        restaurant2.setY_coordinate(getAddress(restaurant2.getAddress()).getDouble("y"));
+//
+//
+//        restaurant2.setHeart((long) 222);
+//        restaurant2.setCategory("china");
+//        restaurantRepository.save(restaurant2);
 
-
-            Restaurant restaurant = new Restaurant();
-            Menu menu = new Menu();
-
-            menu.setPrice(10000);
-            menu.setMenuName("고기");
-            menuRepository.save(menu);
-            menulist.add(menu);
-            restaurant.setMenus(menulist);
-
-            restaurant.setRestaurantName("이차돌");
-            restaurant.setRestaurantNumber("010-xxxx-xxxx");
-            restaurant.setAddress("판교역로 235");
-            restaurant.setX_coordinate(getAddress(restaurant.getAddress()).getDouble("x"));
-            restaurant.setY_coordinate(getAddress(restaurant.getAddress()).getDouble("y"));
-
-
-            restaurant.setHeart((long) 22);
-            restaurant.setCategory("korea");
-            restaurantRepository.save(restaurant);
-
-        }
-
-        for (int i = 0; i < 10; i++) {
-
-
-            Restaurant restaurant = new Restaurant();
-            Menu menu = new Menu();
-            menu.setPrice(10000);
-            menu.setMenuName("탕수육 ");
-            menuRepository.save(menu);
-            menulist.add(menu);
-            restaurant.setMenus(menulist);
-
-
-            restaurant.setRestaurantName("홍콩반점");
-            restaurant.setRestaurantNumber("010-xxxx-xxxx");
-            restaurant.setAddress("경기도 성남시 분당구 대왕판교로385번길 28");
-            restaurant.setX_coordinate(getAddress(restaurant.getAddress()).getDouble("x"));
-            restaurant.setY_coordinate(getAddress(restaurant.getAddress()).getDouble("y"));
-
-
-            restaurant.setHeart((long) 222);
-            restaurant.setCategory("china");
-            restaurantRepository.save(restaurant);
-
-        }
         List<Restaurant> allRestaurant = restaurantRepository.findAllRestaurant();
-        return allRestaurant;
+
+        List<RestaurantDto> allRestaurantDtos = new ArrayList<>();
+        for (Restaurant restaurant : allRestaurant) {
+
+            RestaurantDto restaurantDto = new RestaurantDto();
+            restaurantDto.setX_coordinate(restaurant.getX_coordinate());
+            restaurantDto.setY_coordinate(restaurant.getY_coordinate());
+            restaurantDto.setHeart(restaurant.getHeart());
+            restaurantDto.setCategory(restaurant.getCategory());
+            restaurantDto.setRestaurantName(restaurant.getRestaurantName());
+            restaurantDto.setRestaurantNumber(restaurant.getRestaurantNumber());
+            restaurantDto.setAddress(restaurant.getAddress());
+
+            allRestaurantDtos.add(restaurantDto);
+        }
+
+        return allRestaurantDtos;
+    }
+
+
+    @GetMapping("/restaurant")
+    public List<RestaurantDto> restaurantList() {
+
+        List<Restaurant> allRestaurant = restaurantRepository.findAllRestaurant();
+        List<RestaurantDto> allRestaurantDtos = new ArrayList<>();
+
+        for (Restaurant restaurant : allRestaurant) {
+
+            RestaurantDto restaurantDto = new RestaurantDto();
+            restaurantDto.setX_coordinate(restaurant.getX_coordinate());
+            restaurantDto.setY_coordinate(restaurant.getY_coordinate());
+            restaurantDto.setHeart(restaurant.getHeart());
+            restaurantDto.setCategory(restaurant.getCategory());
+            restaurantDto.setRestaurantName(restaurant.getRestaurantName());
+            restaurantDto.setRestaurantNumber(restaurant.getRestaurantNumber());
+            restaurantDto.setAddress(restaurant.getAddress());
+
+            allRestaurantDtos.add(restaurantDto);
+        }
+
+        return allRestaurantDtos;
     }
 
     @GetMapping("/restaurant/{category}")
-    public List<Restaurant> filterList(@PathVariable("category") String category) {
+    public List<RestaurantDto> filterList(@PathVariable("category") String category) {
 
         List<Restaurant> allRestaurant = restaurantRepository.findAllRestaurant();
-        List<Restaurant> filterRestaurant = new ArrayList<>();
+        List<RestaurantDto> filterRestaurant = new ArrayList<>();
+
         for (Restaurant restaurant : allRestaurant) {
 
             if (restaurant.getCategory().equals(category)) {
-                filterRestaurant.add(restaurant);
+
+                RestaurantDto restaurantDto = new RestaurantDto();
+                restaurantDto.setX_coordinate(restaurant.getX_coordinate());
+                restaurantDto.setY_coordinate(restaurant.getY_coordinate());
+                restaurantDto.setHeart(restaurant.getHeart());
+                restaurantDto.setCategory(restaurant.getCategory());
+                restaurantDto.setRestaurantName(restaurant.getRestaurantName());
+                restaurantDto.setRestaurantNumber(restaurant.getRestaurantNumber());
+                restaurantDto.setAddress(restaurant.getAddress());
+
+                filterRestaurant.add(restaurantDto);
             }
 
 
         }
-
 
         return filterRestaurant;
     }
@@ -113,7 +161,6 @@ public class CategoryFilterController {
 //
 //
 //    }
-
 
 
 
