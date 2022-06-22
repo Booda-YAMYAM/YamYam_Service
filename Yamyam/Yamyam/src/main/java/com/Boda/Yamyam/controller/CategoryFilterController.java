@@ -1,6 +1,8 @@
 package com.Boda.Yamyam.controller;
 
+import com.Boda.Yamyam.domain.Menu;
 import com.Boda.Yamyam.domain.Restaurant;
+import com.Boda.Yamyam.repository.MenuRepository;
 import com.Boda.Yamyam.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
@@ -27,9 +29,8 @@ public class CategoryFilterController {
 
 
     private final RestaurantRepository restaurantRepository;
-    private double latitude;
-    private double longitude;
-//    HashMap<String,Double> XYlocation=new HashMap<>();
+    private final MenuRepository menuRepository;
+    List<Menu> menulist = new ArrayList<>();
 
     @GetMapping("/restaurant")
     public List<Restaurant> initialList() {
@@ -39,6 +40,13 @@ public class CategoryFilterController {
 
 
             Restaurant restaurant = new Restaurant();
+            Menu menu = new Menu();
+
+            menu.setPrice(10000);
+            menu.setMenuName("고기");
+            menuRepository.save(menu);
+            menulist.add(menu);
+            restaurant.setMenus(menulist);
 
             restaurant.setRestaurantName("이차돌");
             restaurant.setRestaurantNumber("010-xxxx-xxxx");
@@ -57,6 +65,13 @@ public class CategoryFilterController {
 
 
             Restaurant restaurant = new Restaurant();
+            Menu menu = new Menu();
+            menu.setPrice(10000);
+            menu.setMenuName("탕수육 ");
+            menuRepository.save(menu);
+            menulist.add(menu);
+            restaurant.setMenus(menulist);
+
 
             restaurant.setRestaurantName("홍콩반점");
             restaurant.setRestaurantNumber("010-xxxx-xxxx");
@@ -92,12 +107,12 @@ public class CategoryFilterController {
         return filterRestaurant;
     }
 
-    @GetMapping("/{address}")
-    public    Double  address(@PathVariable("address") String address) {
-        return getAddress(address).getDouble("y");
-
-
-    }
+//    @GetMapping("/{address}")
+//    public    Double  address(@PathVariable("address") String address) {
+//        return getAddress(address).getDouble("y");
+//
+//
+//    }
 
 
 

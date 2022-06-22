@@ -35,7 +35,7 @@ public class Restaurant {
 
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id")
+//    @JoinColumn(name = "menu_id")
     private List<Menu> menus = new ArrayList<>();
 
 
