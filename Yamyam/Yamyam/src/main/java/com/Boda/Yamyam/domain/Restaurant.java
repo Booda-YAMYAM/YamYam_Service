@@ -21,9 +21,11 @@ public class Restaurant {
 
     private  String restaurantNumber;
 
-    private Long X_coordinate;
+    private Double X_coordinate;
 
-    private Long Y_coordinate;
+    private Double Y_coordinate;
+
+
 
     private  String address;
 

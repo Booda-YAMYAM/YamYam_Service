@@ -1,5 +1,6 @@
 package com.Boda.Yamyam.repository;
 
+import com.Boda.Yamyam.domain.Menu;
 import com.Boda.Yamyam.domain.Restaurant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -10,15 +11,15 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class RestaurantRepository {
+public class MenuRepository {
 
     private final EntityManager em;
 
     @Transactional
-    public void save(Restaurant restaurant){em.persist(restaurant);}
+    public void save(Menu menu){em.persist(menu);}
 
-    public List<Restaurant> findAllRestaurant() {
-        return em.createQuery("select r from Restaurant r", Restaurant.class)
+    public List<Menu> findAllMenu() {
+        return em.createQuery("select m from Menu m", Menu.class)
                 .getResultList();
     }
 }
