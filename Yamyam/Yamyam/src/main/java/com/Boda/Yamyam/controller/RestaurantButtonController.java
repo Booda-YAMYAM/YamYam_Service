@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,7 @@ public class RestaurantButtonController {
 
     private User user;
 
+    @Transactional
     @GetMapping("/restaurant/{restaurantId}")
     public Object projectInfo(@PathVariable("restaurantId") Long restaurantId) {
 
