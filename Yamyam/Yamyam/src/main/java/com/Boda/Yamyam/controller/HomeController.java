@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import java.util.List;
 @RestController
 @RequiredArgsConstructor
@@ -16,6 +17,7 @@ public class HomeController {
     private RestaurantRepository repository;
     private Menu menu;
 
+    @Transactional
     @GetMapping("/")
     public void projectInfo() {
         for(int i=0;i<10;i++){

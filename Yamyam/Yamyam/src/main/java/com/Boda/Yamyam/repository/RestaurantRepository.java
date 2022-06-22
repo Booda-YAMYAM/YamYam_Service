@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+
 public class RestaurantRepository {
 
     private final EntityManager em;
