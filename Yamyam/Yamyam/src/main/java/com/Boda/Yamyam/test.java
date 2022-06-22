@@ -1,4 +1,4 @@
 package com.Boda.Yamyam;
 
-public class sfsdfsdfdsf {
+public class test {
 }
