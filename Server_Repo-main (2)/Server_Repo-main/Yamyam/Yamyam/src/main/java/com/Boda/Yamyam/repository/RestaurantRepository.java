@@ -1,5 +1,6 @@
 package com.Boda.Yamyam.repository;
 
+import com.Boda.Yamyam.domain.Menu;
 import com.Boda.Yamyam.domain.Restaurant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,5 +23,10 @@ public class RestaurantRepository {
         return em.createQuery("select r from Restaurant r", Restaurant.class)
                 .getResultList();
 
+    }
+    public Restaurant findByRestaurantId(Long restaurantId){
+        return em.createQuery("select m from Restaurant m where m.restaurantId = :restaurantId", Restaurant.class)
+                .setParameter("restaurantId",restaurantId )
+                .getSingleResult();
     }
 }
