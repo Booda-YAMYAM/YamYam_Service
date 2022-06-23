@@ -9,11 +9,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class RestaurantImage {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long menuImageId;
+    private Long RestaurantImageId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 

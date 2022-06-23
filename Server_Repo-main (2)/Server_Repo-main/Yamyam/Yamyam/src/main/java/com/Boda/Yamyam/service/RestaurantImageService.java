@@ -32,7 +32,6 @@ public class RestaurantImageService {
 
         multipartFile.transferTo(saveFile);
 
-
         Restaurant findRestaurant = restaurantRepository.findByRestaurantId(Long.parseLong(restaurantId));
         RestaurantImage restaurantImage = new RestaurantImage();
         restaurantImage.setRestaurant(findRestaurant);
@@ -45,10 +44,10 @@ public class RestaurantImageService {
     public RestaurantImageDto read(String restaurantId){
         RestaurantImageDto restaurantImageDto = new RestaurantImageDto();
         Restaurant findMenu = restaurantRepository.findByRestaurantId(Long.parseLong(restaurantId));
-        List<RestaurantImage> restaurantImages = findMenu.getRestaurantImages();
+        RestaurantImage restaurantImages = findMenu.getRestaurantImages();
 
         restaurantImageDto.setRestaurantId(restaurantId);
-        restaurantImageDto.setImagePath(restaurantImages.get(0).getFilePath());
+        restaurantImageDto.setImagePath(restaurantImages.getFilePath());
 
         return restaurantImageDto;
     }

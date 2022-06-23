@@ -22,7 +22,7 @@ public class MenuImageService {
 
     private final MenuImageRepository menuImageRepository;
 
-    private final MenuRepository menuRepository;
+    private MenuRepository menuRepository;
 
     public void write(String menuId, MultipartFile multipartFile) throws Exception {
 

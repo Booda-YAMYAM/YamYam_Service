@@ -11,6 +11,8 @@ import java.util.List;
 @Setter
 public class RestaurantDto {
 
+    private Long restaurantId;
+
     private Double X_coordinate;
 
     private Double Y_coordinate;
@@ -25,6 +27,7 @@ public class RestaurantDto {
 
     private String category;
 
-    private List<Menu> menus;
+    private String restaurantImages;
+//    private List<Menu> menus;
 
 }

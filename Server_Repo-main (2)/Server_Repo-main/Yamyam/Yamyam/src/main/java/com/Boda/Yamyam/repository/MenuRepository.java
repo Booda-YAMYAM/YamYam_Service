@@ -1,30 +1,14 @@
 package com.Boda.Yamyam.repository;
 
 import com.Boda.Yamyam.domain.Menu;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class MenuRepository {
+public interface MenuRepository extends JpaRepository<Menu, Long> {
 
-    private final EntityManager em;
+    @Override
+    List<Menu> findAll();
 
-    @Transactional
-    public void save(Menu menu){em.persist(menu);}
-
-    public List<Menu> findAllMenu() {
-        return em.createQuery("select m from Menu m", Menu.class)
-                .getResultList();
-    }
-
-    public Menu findByMenuId(Long menuId){
-        return em.createQuery("select m from Menu m where m.menuId = :menuId", Menu.class)
-                .setParameter("menuId",menuId )
-                .getSingleResult();
-    }
+    Menu findByMenuId(Long menuId);
 }

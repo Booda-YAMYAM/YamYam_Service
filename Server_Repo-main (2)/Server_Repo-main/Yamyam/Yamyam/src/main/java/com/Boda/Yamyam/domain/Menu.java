@@ -22,8 +22,6 @@ public class Menu {
 
     private String cartegory;
 
-    private Long menuNum;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
@@ -32,4 +30,3 @@ public class Menu {
     private List<MenuImage> menuImages = new ArrayList<>();
 
 }
-

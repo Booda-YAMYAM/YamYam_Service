@@ -31,11 +31,11 @@ public class Restaurant {
 
     private String category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "restaurant")
     private List<Menu> menus = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private List<RestaurantImage> restaurantImages = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    private RestaurantImage restaurantImages;
 
 }
 
