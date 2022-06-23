@@ -22,12 +22,14 @@ public class Menu {
 
     private String cartegory;
 
-
-    @Column(name = "restaurant_id")
     private Long menuNum;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "menuId")
-//    private List<MenuImage> menuImages = new ArrayList<>();
-}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")
+    private List<MenuImage> menuImages = new ArrayList<>();
+
+}
 

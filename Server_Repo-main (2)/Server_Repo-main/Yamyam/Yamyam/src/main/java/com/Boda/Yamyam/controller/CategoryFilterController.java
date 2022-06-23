@@ -210,6 +210,7 @@ public class CategoryFilterController {
             restaurant.setAddress("인천광역시 중구 영종대로 84");
             restaurant.setX_coordinate(getXYAddress(restaurant.getAddress()).getDouble("x")+(double)i*0.23424 );
             restaurant.setY_coordinate(getXYAddress(restaurant.getAddress()).getDouble("y")-(double)i*0.25734);
+            restaurant.setRestaurantId(1L);
 
 
 
@@ -242,6 +243,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("korea");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -249,6 +251,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("korea");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
 
                     }
@@ -264,6 +267,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("china");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -271,6 +275,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("china");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
 
                     }
@@ -286,6 +291,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("france");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -293,6 +299,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("france");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
 
                     }
@@ -308,6 +315,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("dessert");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -315,6 +323,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("dessert");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
                     }
                 }
@@ -329,6 +338,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("cafe");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -336,6 +346,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("cafe");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
 
                     }
@@ -351,6 +362,7 @@ public class CategoryFilterController {
                         menu.setMenuNum((long)i);
                         menu.setCartegory("conviniencestore");
                         menulist.add(menu);
+                        menu.setRestaurant(restaurant);
                         menuRepository.save(menu);
                         Menu menu2 = new Menu();
                         menu2.setPrice(10000L);
@@ -358,6 +370,7 @@ public class CategoryFilterController {
                         menu2.setMenuNum((long)i);
                         menu2.setCartegory("conviniencestore");
                         menulist.add(menu2);
+                        menu2.setRestaurant(restaurant);
                         menuRepository.save(menu2);
 
                     }
@@ -373,6 +386,7 @@ public class CategoryFilterController {
                     menu.setMenuNum((long)i);
                     menu.setCartegory("japan");
                     menulist.add(menu);
+                    menu.setRestaurant(restaurant);
                     menuRepository.save(menu);
                     Menu menu2 = new Menu();
                     menu2.setPrice(10000L);
@@ -380,6 +394,7 @@ public class CategoryFilterController {
                     menu2.setMenuNum((long)i);
                     menu2.setCartegory("japan");
                     menulist.add(menu2);
+                    menu2.setRestaurant(restaurant);
                     menuRepository.save(menu2);
 
                 }

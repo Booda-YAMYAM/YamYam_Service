@@ -8,15 +8,14 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class MenuImage {
-
+public class RestaurantImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long menuImageId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
 
     private String fileName;
 
