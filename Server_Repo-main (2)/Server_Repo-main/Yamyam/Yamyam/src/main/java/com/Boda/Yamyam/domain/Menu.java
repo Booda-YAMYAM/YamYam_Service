@@ -20,9 +20,11 @@ public class Menu {
 
     private Long price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    private String cartegory;
+
+
+    @Column(name = "restaurant_id")
+    private Long menuNum;
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "menuId")
 //    private List<MenuImage> menuImages = new ArrayList<>();

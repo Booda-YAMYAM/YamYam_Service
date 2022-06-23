@@ -31,9 +31,12 @@ public class Restaurant {
 
     private String category;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private List<Menu> menus = new ArrayList<>();
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+//    private List<Menu> menus = new ArrayList<>();
 
+    @OneToMany
+    @JoinColumn
+    private List<Menu> menus = new ArrayList<>();
 }
 
 
