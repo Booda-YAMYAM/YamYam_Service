@@ -23,7 +23,7 @@ import java.net.URLEncoder;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class InitialInit {
+public class Initialize {
 
     private final RestaurantRepository restaurantRepository;
 
